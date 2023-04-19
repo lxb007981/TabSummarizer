@@ -33,7 +33,13 @@ chrome.runtime.onMessage.addListener(async function (message, sender, sendRespon
   if (message.rawText) {
     document.getElementById("text").innerText = "Loading..."
     const summary = await sendPostRequest(message.rawText);
-    document.getElementById("text").innerText = summary
+    if (summary) {
+      document.getElementById("text").innerText = summary
+
+    }
+    else{
+      document.getElementById("text").innerText = "Error loading summary"
+    }
   }
 });
 
